@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faces-config
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd"
+    version="1.2">
+	<managed-bean>
+		<managed-bean-name>login</managed-bean-name>
+		<managed-bean-class>br.com.neb.handler.LoginHandler</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<navigation-rule>
+		<display-name>index</display-name>
+		<from-view-id>/index.jsp</from-view-id>
+		<navigation-case>
+			<from-action>#{login.doAuthentication}</from-action>
+			<from-outcome>authenticated</from-outcome>
+			<to-view-id>/main/main.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>index</display-name>
+		<from-view-id>/index.jsp</from-view-id>
+		<navigation-case>
+			<from-action>#{login.doAuthentication}</from-action>
+			<from-outcome>fail</from-outcome>
+			<to-view-id>/main/fail.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>index</display-name>
+		<from-view-id>/index.jsp</from-view-id>
+		<navigation-case>
+			<from-action>#{login.doAuthentication}</from-action>
+			<from-outcome>selectSupplier</from-outcome>
+			<to-view-id>/main/selectSuppliers.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>main/selectSuppliers</display-name>
+		<from-view-id>/main/selectSuppliers.jsp</from-view-id>
+		<navigation-case>
+			<from-action>#{login.doSupplierSelected}</from-action>
+			<from-outcome>selected</from-outcome>
+			<to-view-id>/main/main.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+</faces-config>

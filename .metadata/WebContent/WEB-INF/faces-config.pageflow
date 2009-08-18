@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf12505326109271" configfile="/DemoJSF/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="main/main" x="259" y="213" id="pf12505358921612" referenceLink="//@navigationRule.3/@navigationCase.0/@toViewId|" inlinks="pf12505358921613 pf12505382028609" path="/main/main.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="index" x="264" y="36" id="pf12505358921624" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf12505358921613 pf12505371504025 pf12505372548107" path="/index.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="main/fail" x="120" y="213" id="pf12505371504026" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf12505371504025" path="/main/fail.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="main/selectSuppliers" x="396" y="213" id="pf12505372548108" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf12505382028609" inlinks="pf12505372548107" path="/main/selectSuppliers.jsp"/>
+  <links id="pf12505358921613" target="pf12505358921612" source="pf12505358921624" outcome="authenticated" fromaction="#{login.doAuthentication}"/>
+  <links id="pf12505371504025" target="pf12505371504026" source="pf12505358921624" outcome="fail" fromaction="#{login.doAuthentication}"/>
+  <links id="pf12505372548107" target="pf12505372548108" source="pf12505358921624" outcome="selectSupplier" fromaction="#{login.doAuthentication}"/>
+  <links id="pf12505382028609" target="pf12505358921612" source="pf12505372548108" outcome="selected" fromaction="#{login.doSupplierSelected}"/>
+</pageflow:Pageflow>
