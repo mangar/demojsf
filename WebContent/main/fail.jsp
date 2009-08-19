@@ -9,6 +9,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-Fail!
+<center><h1>Fail!</h1></center>
 </body>
 </html>

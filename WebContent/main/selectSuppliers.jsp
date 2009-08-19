@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
-<%@ taglib uri="http://java.sun.com/jsf/core" prefix="f" %>
-<%@ taglib uri="http://java.sun.com/jsf/html" prefix="h" %>
-<%@ taglib uri="http://richfaces.org/a4j" prefix="a4j" %>
+<%@ taglib uri="http://java.sun.com/jsf/core" prefix="f"%>
+<%@ taglib uri="http://java.sun.com/jsf/html" prefix="h"%>
+<%@ taglib uri="http://richfaces.org/a4j" prefix="a4j"%>
+<%@ taglib uri="http://richfaces.org/rich" prefix="rich"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -20,14 +21,14 @@
 <f:view>
 	<h:form>
 		<h:selectOneMenu id="suppliers">
-			<f:selectItems value="#{login.suppliers}" />
+			<f:selectItems value="#{loginHandler.suppliers}" />
 		</h:selectOneMenu>
-		<h:commandButton value="Select" action="#{login.doSupplierSelected}" />
+		<h:commandButton value="Select" action="#{loginHandler.doSupplierSelected}" />
 	</h:form>
 
 	<hr />
 
-	<h:dataTable border="1" value="#{login.suppliersVO}" var="supplier">
+	<h:dataTable border="1" value="#{loginHandler.suppliersVO}" var="supplier">
 		<h:column>
 			<f:facet name="header">
 				<h:outputText value="ID" />
@@ -58,27 +59,34 @@
 
 		<h:column>
 			<f:facet name="header">
-				<h:outputText value="" />
+				<h:outputText value="Action" />
 			</f:facet>
+			<a4j:form reRender="out">
+				<a4j:commandButton value="Select..." reRender="out2">
+					<a4j:actionparam name="supplier_id" value="#{supplier.id}" assignTo="#{loginHandler.user.supplier.id}" />
+					<a4j:actionparam name="supplier_name" value="#{supplier.name}" assignTo="#{loginHandler.user.supplier.name}" />
+				</a4j:commandButton>
+			</a4j:form>
 		</h:column>
 	</h:dataTable>
 
-	<hr />
 
-
-
-	<h:form>
-
-	</h:form>
-
-
-	<a4j:form ajaxSubmit="true" reRender="name">
-			<h:panelGrid>
-			<h:commandButton value="Select..." action="#{login.doConfirmSupplier}" />
-			<h:outputText id="name" value="Name:#{login.username}" />
-		</h:panelGrid>
+	Ordem de execucao: 
+	<a4j:form>
+		<a4j:commandButton value="DeSelect Supplier..." reRender="out2">
+			<a4j:actionparam  value="" assignTo="#{loginHandler.user.supplier.id}" />
+		</a4j:commandButton>
 	</a4j:form>
 
+
+	<hr />
+
+	<h:form>
+	<a4j:outputPanel id="out2">
+		<h:outputText rendered="#{not empty loginHandler.user.supplier.id}" value="Approved Text: #{loginHandler.user.supplier.id}" />
+		<h:commandButton rendered="#{not empty loginHandler.user.supplier.id}" value="Confirm" action="#{loginHandler.doSupplierSelected}" />
+	</a4j:outputPanel>
+	</h:form>
 
 
 </f:view>

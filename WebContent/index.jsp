@@ -13,9 +13,9 @@
 
 <f:view>
 	<h:form>
-		login: <h:inputText value="#{login.username}"/> <br>
-		password <h:inputSecret value="#{login.password}" /> <br>
-		<h:commandButton value="Vai Planeta!" action="#{login.doAuthentication}" />
+		login: <h:inputText value="#{loginHandler.user.username}"/> <br>
+		password <h:inputSecret value="#{loginHandler.user.password}" /> <br>
+		<h:commandButton value="Vai Planeta!" action="#{loginHandler.doAuthentication}" />
 	</h:form>
 </f:view>
 

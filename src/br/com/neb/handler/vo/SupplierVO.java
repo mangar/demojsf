@@ -4,75 +4,110 @@
 package br.com.neb.handler.vo;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author mangar
- *
+ * 
  */
 public class SupplierVO implements Serializable {
 
-	/**
+    /**
 	 * 
 	 */
-	private static final long serialVersionUID = -1686980927592147793L;
+    private static final long serialVersionUID = -1686980927592147793L;
 
-	private Integer id;
-	
-	private String name;
-	
-	private String city;
-	
-	private String state;
+    private Integer id;
 
-	
-	
-	public static SupplierVO generateSupplier1() {
-		return new SupplierVO().setId(Integer.valueOf(1)).setName("Supplier 001").setCity("Sao Paulo").setState("SP");		
-	}
-	public static SupplierVO generateSupplier2() {
-		return new SupplierVO().setId(Integer.valueOf(2)).setName("Supplier 002").setCity("Rio de Janeiro").setState("RJ");		
-	}
-	public static SupplierVO generateSupplier3() {
-		return new SupplierVO().setId(Integer.valueOf(3)).setName("Supplier 003").setCity("Bauru").setState("SP");		
-	}
-	
-	
-	public Integer getId() {
-		return id;
-	}
+    private String name;
 
-	public SupplierVO setId(Integer id) {
-		this.id = id;
-		return this;
-	}
+    private String city;
 
-	public String getName() {
-		return name;
-	}
+    private String state;
 
-	public SupplierVO setName(String name) {
-		this.name = name;
-		return this;
-	}
+    private CreditCardVO cc = new CreditCardVO();
 
-	public String getCity() {
-		return city;
-	}
+    public static SupplierVO generateSupplier1() {
+	return new SupplierVO().setIdFluent(Integer.valueOf(1)).setNameFluent("Supplier 001")
+		.setCityFluent("Sao Paulo").setStateFluent("SP");
+    }
 
-	public SupplierVO setCity(String city) {
-		this.city = city;
-		return this;
-	}
+    public static SupplierVO generateSupplier2() {
+	return new SupplierVO().setIdFluent(Integer.valueOf(2)).setNameFluent("Supplier 002").setCityFluent(
+		"Rio de Janeiro").setStateFluent("RJ");
+    }
 
-	public String getState() {
-		return state;
-	}
+    public static SupplierVO generateSupplier3() {
+	return new SupplierVO().setIdFluent(Integer.valueOf(3)).setNameFluent("Supplier 003").setCityFluent("Bauru")
+		.setStateFluent("SP");
+    }
 
-	public SupplierVO setState(String state) {
-		this.state = state;
-		return this;
+    public SupplierVO setIdFluent(Integer id) {
+	this.id = id;
+	return this;
+    }
+
+    public SupplierVO setNameFluent(String name) {
+	this.name = name;
+	return this;
+    }
+
+    public SupplierVO setCityFluent(String city) {
+	this.city = city;
+	return this;
+    }
+
+    public SupplierVO setStateFluent(String state) {
+	this.state = state;
+	return this;
+    }
+
+    
+    public SupplierVO createCreditCard(String number) {
+	if (this.cc == null) {
+	    this.cc = new CreditCardVO();
 	}
-	
+	this.cc.setNumber(number);
+	return this;
+    }
+    
+    public void setId(Integer id) {
+	this.id = id;
+    }
+
+    public void setCity(String city) {
+	this.city = city;
+    }
+
+    public void setState(String state) {
+	this.state = state;
+    }
+
+    public Integer getId() {
+	return id;
+    }
+
+    public void setName(String name) {
+	this.name = name;
+    }
+
+    public String getName() {
+	return name;
+    }
+
+    public String getCity() {
+	return city;
+    }
+
+    public String getState() {
+	return state;
+    }
+
+    public CreditCardVO getCc() {
+	return cc;
+    }
+
+    public void setCc(CreditCardVO cc) {
+	this.cc = cc;
+    }
+
 }

@@ -9,6 +9,7 @@ import java.util.List;
 import javax.faces.model.SelectItem;
 
 import br.com.neb.handler.vo.SupplierVO;
+import br.com.neb.handler.vo.UserVO;
 
 /**
  * @author mangar
@@ -16,93 +17,86 @@ import br.com.neb.handler.vo.SupplierVO;
  */
 public class LoginHandler {
 
-	private String username;
-
-	private String password;
-
-	private SupplierVO supplier;
-
-	/**
-	 * Process the authentication...
-	 * 
-	 * @return
-	 */
-	public String doAuthentication() {
-		if (this.getUsername().equalsIgnoreCase("user")) {
-			return "authenticated";
-		} else if (this.getUsername().equalsIgnoreCase("adm")) {
-			return "selectSupplier";
-		}
-		return "fail";
+    private UserVO user = new UserVO();
+    
+    /**
+     * Process the authentication...
+     * 
+     * @return
+     */
+    public String doAuthentication() {
+	if (this.getUser().getUsername().equalsIgnoreCase("user")) {
+	    return "authenticated";
+	} else if (this.getUser().getUsername().equalsIgnoreCase("adm")) {
+	    return "selectSupplier";
 	}
+	return "fail";
+    }
 
-	/**
-	 * Return a list of suppliers... for select object
-	 * 
-	 * @return
-	 */
-	public List<SelectItem> getSuppliers() {
-		List<SelectItem> options = new ArrayList<SelectItem>();
-		options.add(new SelectItem("supplier001", "Supplier 001"));
-		options.add(new SelectItem("supplier002", "Supplier 002"));
-		return options;
-	}
+    /**
+     * Return a list of suppliers... for select object
+     * 
+     * @return
+     */
+    public List<SelectItem> getSuppliers() {
+	List<SelectItem> options = new ArrayList<SelectItem>();
+	options.add(new SelectItem("supplier001", "Supplier 001"));
+	options.add(new SelectItem("supplier002", "Supplier 002"));
+	return options;
+    }
 
-	/**
-	 * Return a list of suppliers... for a table object...
-	 * @return
-	 */
-	public List<SupplierVO> getSuppliersVO() {
-		List<SupplierVO> suppliers = new ArrayList<SupplierVO>();
-		suppliers.add(SupplierVO.generateSupplier1());
-		suppliers.add(SupplierVO.generateSupplier2());
-		suppliers.add(SupplierVO.generateSupplier3());
-		return suppliers;
-	}
+    /**
+     * Return a list of suppliers... for a table object...
+     * 
+     * @return
+     */
+    public List<SupplierVO> getSuppliersVO() {
+	List<SupplierVO> suppliers = new ArrayList<SupplierVO>();
+	suppliers.add(SupplierVO.generateSupplier1());
+	suppliers.add(SupplierVO.generateSupplier2());
+	suppliers.add(SupplierVO.generateSupplier3());
+	return suppliers;
+    }
 
-	/**
-	 * Collect info from supplier and set it in the Handler
-	 * @return
-	 */
-	public String doConfirmSupplier() {
-		System.out.println("doConfirmSupplier.........................");
-		this.supplier = new SupplierVO().setId(Integer.valueOf(1)).setName("Name...");
-		this.username = "abc...";
-		return "Username....";
-	}
-	
-	
-	/**
-	 * Do something with the selected supplier....
-	 * 
-	 * @return
-	 */
-	public String doSupplierSelected() {
-		return "selected";
-	}
+    /**
+     * Collect info from supplier and set it in the Handler
+     * 
+     * @return
+     */
+    public String doConfirmSupplier() {
+	System.out.println("doConfirmSupplier.........................");
+	// this.supplier = new SupplierVO().setId(Integer.valueOf(1)).setName(
+	// "Name...");
+	this.user.setUsername("abc...");
+	return "Username....";
+    }
 
-	public String getUsername() {
-		return username;
-	}
+    /**
+     * Do something with the selected supplier....
+     * 
+     * @return
+     */
+    public String doSupplierSelected() {
+	return "selected";
+    }
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    
+    
+    
+    
 
-	public String getPassword() {
-		return password;
-	}
+    public UserVO getUser() {
+        return user;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public void setUser(UserVO user) {
+        this.user = user;
+    }
 
-	public SupplierVO getSupplier() {
-		return supplier;
-	}
+//    public void setSelectedSupplierId(String selectedSupplierId) {
+//	this.selectedSupplierId = selectedSupplierId;
+//	this.setSelectedSupplierName((this.selectedSupplierId.trim().length() == 0 ? "" : "Supplier 00" + selectedSupplierId));
+//    }
 
-	public void setSupplier(SupplierVO supplier) {
-		this.supplier = supplier;
-	}
 
 }

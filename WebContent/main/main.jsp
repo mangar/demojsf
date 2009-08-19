@@ -13,8 +13,17 @@
 <body>
 
 <f:view>
-	<center><h1>Welcome.... <h:outputText value="#{login.username}"/></h1></center>
+	<center><h1>Welcome</h1></center> <br /> 
+	<h:outputText value="#{loginHandler.user.username}"/><br />
+	<h:outputText value="#{loginHandler.user.supplier.id}" /><br />
+	<h:outputText value="#{loginHandler.user.supplier.name}" /><br />
+	
+	<hr />
+	
+	<h:form>
+	<h:commandLink value="Create Supplier" action="#{supplierHandler.doCreate}" />
+	</h:form>
+	
 </f:view>
-
 </body>
 </html>
