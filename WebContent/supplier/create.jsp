@@ -19,15 +19,20 @@
 
 	<h:form>
 		<h:outputLabel value="Name: " />
-		<h:inputText required="true" value="#{supplierHandler.supplier.name}" id="_form_name" />
-		<h:message for="_form_name" style="color: darked"/>
-		<br />
+		<h:inputText value="#{supplierHandler.supplier.name}" id="_form_name" />
+		<rich:spacer height="20" /> <br />
+		
+
 		<h:outputLabel value="City: " />
 		<h:inputText value="#{supplierHandler.supplier.city}" id="_form_city" />
-		<br />
-		<h:outputLabel value="Credit Card: " />
-		<h:inputText value="#{supplierHandler.supplier.cc.number}" id="_form_creditcard" />
-		<br />
+		<rich:spacer height="20" /><br />
+		
+		<h:outputLabel value="(*) Credit Card: " />
+		<h:inputText immediate="true" required="true" value="#{supplierHandler.supplier.cc.number}" id="_form_creditcard">
+			<f:validateLength minimum="16" maximum="16" />
+		</h:inputText> 
+		<h:message for="_form_creditcard" style="color: darked"/>
+		<rich:spacer height="20" /><br />
 		
 		<h:commandButton value="Create" action="#{supplierHandler.doSave}" />
 	</h:form>
