@@ -6,6 +6,10 @@ package br.com.neb.handler;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.component.UIComponent;
+import javax.faces.component.UIInput;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
 import br.com.neb.handler.vo.SupplierVO;
@@ -48,6 +52,7 @@ public class SupplierHandler extends BaseHandler {
 	    if (supplier.getId().intValue() == id.intValue()) {
 		this.supplier.setName(supplier.getName());
 		this.supplier.setCity(supplier.getCity());
+		this.supplier.setEmail(supplier.getEmail());
 		break;
 	    }
 	}
@@ -55,12 +60,10 @@ public class SupplierHandler extends BaseHandler {
     }
 
     public String doSave() {
-	System.out.println("............. " + this.count + " / "
-		+ this.suppliers.size());
-	suppliers
-		.add(new SupplierVO().setIdFluent(++count).setNameFluent(
-			this.supplier.getName()).setCityFluent(
-			this.supplier.getCity()).createCreditCard(this.getSupplier().getCc().getNumber()));
+	System.out.println("............. " + this.count + " / " + this.suppliers.size());
+	suppliers.add(new SupplierVO().setIdFluent(++count).setNameFluent(this.supplier.getName()).setCityFluent(
+		this.supplier.getCity()).createCreditCard(this.getSupplier().getCc().getNumber()).setEmailFluent(
+		this.supplier.getEmail()));
 	return "success";
     }
 
@@ -73,6 +76,22 @@ public class SupplierHandler extends BaseHandler {
 	}
 
 	return this.suppliers;
+    }
+
+    /**
+     * 
+     * @param context
+     * @param component
+     * @param value
+     */
+    // @TODO create a UTIL for this....
+    public void validateEmail(FacesContext context, UIComponent component, Object value) {
+	String email = value.toString();
+	if (!email.contains("@")) {
+	    ((UIInput) component).setValid(false);
+	    FacesMessage message = new FacesMessage("email inv‡lido!");
+	    context.addMessage(component.getClientId(context), message);
+	}
     }
 
     public void setSuppliers(List<SupplierVO> suppliers) {

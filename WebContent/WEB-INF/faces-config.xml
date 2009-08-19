@@ -73,11 +73,15 @@
 		</navigation-case>
 	</navigation-rule>
 	<application>
-		<message-bundle>MessageResources_en</message-bundle>
-		<message-bundle>MessageResources_pt</message-bundle>
+		<message-bundle>br.com.neb.resource.MessageResources_en</message-bundle>
+		<message-bundle>br.com.neb.resource.MessageResources_pt</message-bundle>
 		<locale-config>
 			<default-locale>pt</default-locale>
 			<supported-locale>en</supported-locale>
 		</locale-config>
 	</application>
+	<validator>
+		<validator-id>neb.EmailValidator</validator-id>
+		<validator-class>br.com.neb.validator.EmailValidator</validator-class>
+	</validator>
 </faces-config>

@@ -23,6 +23,12 @@
 		</h:column>
 		<h:column>
 			<f:facet name="header">
+				<h:outputText value="Email" />
+			</f:facet>
+			<h:outputText value="#{sup.email}" />
+		</h:column>		
+		<h:column>
+			<f:facet name="header">
 				<h:outputText value="City" />
 			</f:facet>
 			<h:outputText value="#{sup.city}" />

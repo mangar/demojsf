@@ -12,8 +12,8 @@ import java.io.Serializable;
 public class SupplierVO implements Serializable {
 
     /**
-	 * 
-	 */
+     * 
+     */
     private static final long serialVersionUID = -1686980927592147793L;
 
     private Integer id;
@@ -24,25 +24,36 @@ public class SupplierVO implements Serializable {
 
     private String state;
 
+    private String email;
+
+    private String email2;
+
     private CreditCardVO cc = new CreditCardVO();
 
     public static SupplierVO generateSupplier1() {
 	return new SupplierVO().setIdFluent(Integer.valueOf(1)).setNameFluent("Supplier 001")
-		.setCityFluent("Sao Paulo").setStateFluent("SP");
+		.setCityFluent("Sao Paulo").setStateFluent("SP").createCreditCard("1111.1111.1111.1111")
+		.setEmailFluent("1@1.com.br");
     }
 
     public static SupplierVO generateSupplier2() {
 	return new SupplierVO().setIdFluent(Integer.valueOf(2)).setNameFluent("Supplier 002").setCityFluent(
-		"Rio de Janeiro").setStateFluent("RJ");
+		"Rio de Janeiro").setStateFluent("RJ").createCreditCard("2222.2222.2222.2222").setEmailFluent(
+		"2@2.com.br");
     }
 
     public static SupplierVO generateSupplier3() {
 	return new SupplierVO().setIdFluent(Integer.valueOf(3)).setNameFluent("Supplier 003").setCityFluent("Bauru")
-		.setStateFluent("SP");
+		.setStateFluent("SP").createCreditCard("3333.3333.3333.3333").setEmailFluent("3@3.com.br");
     }
 
     public SupplierVO setIdFluent(Integer id) {
 	this.id = id;
+	return this;
+    }
+
+    public SupplierVO setEmailFluent(String email) {
+	this.email = email;
 	return this;
     }
 
@@ -61,7 +72,6 @@ public class SupplierVO implements Serializable {
 	return this;
     }
 
-    
     public SupplierVO createCreditCard(String number) {
 	if (this.cc == null) {
 	    this.cc = new CreditCardVO();
@@ -69,7 +79,7 @@ public class SupplierVO implements Serializable {
 	this.cc.setNumber(number);
 	return this;
     }
-    
+
     public void setId(Integer id) {
 	this.id = id;
     }
@@ -108,6 +118,22 @@ public class SupplierVO implements Serializable {
 
     public void setCc(CreditCardVO cc) {
 	this.cc = cc;
+    }
+
+    public String getEmail() {
+	return email;
+    }
+
+    public void setEmail(String email) {
+	this.email = email;
+    }
+
+    public String getEmail2() {
+	return email2;
+    }
+
+    public void setEmail2(String email2) {
+	this.email2 = email2;
     }
 
 }
