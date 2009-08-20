@@ -20,90 +20,111 @@ import br.com.neb.handler.vo.SupplierVO;
  */
 public class SupplierHandler extends BaseHandler {
 
-    private SupplierVO supplier = new SupplierVO();
+	private SupplierVO supplier = new SupplierVO();
 
-    private List<SupplierVO> suppliers;
+	private List<SupplierVO> suppliers;
 
-    private Integer count = new Integer(3);
+	private Integer count = new Integer(3);
 
-    public String doCreate() {
-	return "create";
-    }
+	private String message;
 
-    public void doRemove(ActionEvent event) {
-	Integer id = (Integer) this.findParamameter(event, "_id_supplier_remove");
-	int index = 0;
-	for (SupplierVO supplier : suppliers) {
-	    if (supplier.getId().intValue() == id.intValue()) {
-		suppliers.remove(index);
-		break;
-	    }
-	    index++;
-	}
-    }
-
-    /**
-     * 
-     * @param event
-     */
-    public void doLoad(ActionEvent event) {
-	Integer id = (Integer) this.findParamameter(event, "_id_supplier_edit");
-	for (SupplierVO supplier : suppliers) {
-	    if (supplier.getId().intValue() == id.intValue()) {
-		this.supplier.setName(supplier.getName());
-		this.supplier.setCity(supplier.getCity());
-		this.supplier.setEmail(supplier.getEmail());
-		break;
-	    }
+	public String doCreate() {
+		this.setMessage("");
+		return "create";
 	}
 
-    }
-
-    public String doSave() {
-	System.out.println("............. " + this.count + " / " + this.suppliers.size());
-	suppliers.add(new SupplierVO().setIdFluent(++count).setNameFluent(this.supplier.getName()).setCityFluent(
-		this.supplier.getCity()).createCreditCard(this.getSupplier().getCc().getNumber()).setEmailFluent(
-		this.supplier.getEmail()));
-	return "success";
-    }
-
-    public List<SupplierVO> getSuppliers() {
-	if (this.suppliers == null) {
-	    suppliers = new ArrayList<SupplierVO>();
-	    suppliers.add(SupplierVO.generateSupplier1());
-	    suppliers.add(SupplierVO.generateSupplier2());
-	    suppliers.add(SupplierVO.generateSupplier3());
+	public void doRemove(ActionEvent event) {
+		Integer id = (Integer) this.findParamameter(event,
+				"_id_supplier_remove");
+		int index = 0;
+		for (SupplierVO supplier : suppliers) {
+			if (supplier.getId().intValue() == id.intValue()) {
+				suppliers.remove(index);
+				break;
+			}
+			index++;
+		}
 	}
 
-	return this.suppliers;
-    }
-
-    /**
-     * 
-     * @param context
-     * @param component
-     * @param value
-     */
-    // @TODO create a UTIL for this....
-    public void validateEmail(FacesContext context, UIComponent component, Object value) {
-	String email = value.toString();
-	if (!email.contains("@")) {
-	    ((UIInput) component).setValid(false);
-	    FacesMessage message = new FacesMessage("email inv‡lido!");
-	    context.addMessage(component.getClientId(context), message);
+	/**
+	 * 
+	 * @param event
+	 */
+	public void doLoad(ActionEvent event) {
+		Integer id = (Integer) this.findParamameter(event, "_id_supplier_edit");
+		for (SupplierVO supplier : suppliers) {
+			if (supplier.getId().intValue() == id.intValue()) {
+				this.supplier.setName(supplier.getName());
+				this.supplier.setCity(supplier.getCity());
+				this.supplier.setEmail(supplier.getEmail());
+				break;
+			}
+		}
 	}
-    }
 
-    public void setSuppliers(List<SupplierVO> suppliers) {
-	this.suppliers = suppliers;
-    }
+	public String doSave() {
+		System.out.println("............. " + this.count + " / "
+				+ this.suppliers.size());
 
-    public SupplierVO getSupplier() {
-	return supplier;
-    }
+		String welcomeTitle = this.getMessage("welcome-title");
+		System.out.println("Welcome Title: " + welcomeTitle);
 
-    public void setSupplier(SupplierVO supplier) {
-	this.supplier = supplier;
-    }
+		suppliers.add(new SupplierVO().setIdFluent(++count).setNameFluent(
+				this.supplier.getName()).setCityFluent(this.supplier.getCity())
+				.createCreditCard(this.getSupplier().getCc().getNumber())
+				.setEmailFluent(this.supplier.getEmail()));
+		
+		this.setMessage( this.getMessage("message-save-ok") );
+
+		return "success";
+	}
+
+	public List<SupplierVO> getSuppliers() {
+		if (this.suppliers == null) {
+			suppliers = new ArrayList<SupplierVO>();
+			suppliers.add(SupplierVO.generateSupplier1());
+			suppliers.add(SupplierVO.generateSupplier2());
+			suppliers.add(SupplierVO.generateSupplier3());
+		}
+
+		return this.suppliers;
+	}
+
+	/**
+	 * 
+	 * @param context
+	 * @param component
+	 * @param value
+	 */
+	// @TODO create a UTIL for this....
+	public void validateEmail(FacesContext context, UIComponent component,
+			Object value) {
+		String email = value.toString();
+		if (!email.contains("@")) {
+			((UIInput) component).setValid(false);
+			FacesMessage message = new FacesMessage("email inv‡lido!");
+			context.addMessage(component.getClientId(context), message);
+		}
+	}
+
+	public void setSuppliers(List<SupplierVO> suppliers) {
+		this.suppliers = suppliers;
+	}
+
+	public SupplierVO getSupplier() {
+		return supplier;
+	}
+
+	public void setSupplier(SupplierVO supplier) {
+		this.supplier = supplier;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
 
 }

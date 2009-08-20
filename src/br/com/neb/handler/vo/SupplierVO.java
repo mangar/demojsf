@@ -31,6 +31,8 @@ public class SupplierVO implements Serializable {
 
 	private Date dateStart;
 
+	private String stringDateStart;
+
 	private short age;
 
 	private String zipCode;
@@ -152,7 +154,8 @@ public class SupplierVO implements Serializable {
 	}
 
 	public Date getDateStart() {
-		return dateStart;
+		return this.dateStart;
+		// DateUtils.formatDateEN(this.dateStart);
 	}
 
 	public void setDateStart(Date dateStart) {
@@ -189,6 +192,14 @@ public class SupplierVO implements Serializable {
 
 	public void setPhone(PhoneNumberVO phone) {
 		this.phone = phone;
+	}
+
+	public String getStringDateStart() {
+		return stringDateStart;
+	}
+
+	public void setStringDateStart(String stringDateStart) {
+		this.stringDateStart = stringDateStart;
 	}
 
 }

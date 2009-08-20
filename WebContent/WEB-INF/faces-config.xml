@@ -8,6 +8,10 @@
 		<converter-id>neb.PhoneNumberConverter</converter-id>
 		<converter-class>br.com.neb.converter.PhoneConverter</converter-class>
 	</converter>
+	<converter>
+		<converter-id>neb.DateConverter</converter-id>
+		<converter-class>br.com.neb.converter.DateConverter</converter-class>
+	</converter>
 	<managed-bean>
 		<managed-bean-name>loginHandler</managed-bean-name>
 		<managed-bean-class>br.com.neb.handler.LoginHandler</managed-bean-class>

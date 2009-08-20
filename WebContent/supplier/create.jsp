@@ -70,7 +70,7 @@
 
 		<!-- converter usage... -->
 		<h:outputLabel value="Age: " />
-		<h:inputText value="#{supplierHandler.supplier.dateStart}"
+		<h:inputText value="#{supplierHandler.supplier.age}"
 			id="_form_age" maxlength="10">
 			<f:converter converterId="javax.faces.Short" />
 		</h:inputText>
@@ -104,7 +104,7 @@
 		<h:outputLabel value="Date Start: " />
 		<h:inputText value="#{supplierHandler.supplier.dateStart}"
 			id="_form_date_start" maxlength="10">
-			<f:convertDateTime pattern="dd/MM/yyyy"/> 
+			<f:converter converterId="neb.DateConverter"/>
 		</h:inputText>
 		<h:message for="_form_date_start" />
 		<rich:spacer height="20" />
@@ -127,6 +127,9 @@
 
 	<hr />
 
+	<div>
+		<h:outputLabel value="#{supplierHandler.message}" />
+	</div>
 	<jsp:include page="list.jsp" />
 
 </f:view>
