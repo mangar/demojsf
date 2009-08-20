@@ -18,19 +18,21 @@ import br.com.neb.handler.vo.CreditCardVO;
  */
 public class CreditCardConverter implements Converter {
 
-    private static Pattern pattern = Pattern.compile("([0-9]{4}-{3}[0-9]{4}");
+	private static Pattern pattern = Pattern.compile("([0-9]{4}-{3}[0-9]{4}");
 
-    public Object getAsObject(FacesContext context, UIComponent component, String value) {
-	if (pattern.matcher(value).find()) {
-	    CreditCardVO cc = new CreditCardVO();
-	    cc.setNumber(value);
-	    return cc;
+	public Object getAsObject(FacesContext context, UIComponent component,
+			String value) {
+		if (pattern.matcher(value).find()) {
+			CreditCardVO cc = new CreditCardVO();
+			cc.setNumber(value);
+			return cc;
+		}
+		throw new ConverterException("Cannot convert: " + value);
 	}
-	throw new ConverterException("Cannot convert: " + value);
-    }
 
-    public String getAsString(FacesContext context, UIComponent component, Object cc) {
-	return ((CreditCardVO) cc).getNumber();
-    }
+	public String getAsString(FacesContext context, UIComponent component,
+			Object cc) {
+		return ((CreditCardVO) cc).getNumber();
+	}
 
 }

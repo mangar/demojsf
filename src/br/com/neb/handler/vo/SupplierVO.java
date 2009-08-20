@@ -4,6 +4,7 @@
 package br.com.neb.handler.vo;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author mangar
@@ -11,129 +12,183 @@ import java.io.Serializable;
  */
 public class SupplierVO implements Serializable {
 
-    /**
+	/**
      * 
      */
-    private static final long serialVersionUID = -1686980927592147793L;
+	private static final long serialVersionUID = -1686980927592147793L;
 
-    private Integer id;
+	private Integer id;
 
-    private String name;
+	private String name;
 
-    private String city;
+	private String city;
 
-    private String state;
+	private String state;
 
-    private String email;
+	private String email;
 
-    private String email2;
+	private String email2;
 
-    private CreditCardVO cc = new CreditCardVO();
+	private Date dateStart;
 
-    public static SupplierVO generateSupplier1() {
-	return new SupplierVO().setIdFluent(Integer.valueOf(1)).setNameFluent("Supplier 001")
-		.setCityFluent("Sao Paulo").setStateFluent("SP").createCreditCard("1111.1111.1111.1111")
-		.setEmailFluent("1@1.com.br");
-    }
+	private short age;
 
-    public static SupplierVO generateSupplier2() {
-	return new SupplierVO().setIdFluent(Integer.valueOf(2)).setNameFluent("Supplier 002").setCityFluent(
-		"Rio de Janeiro").setStateFluent("RJ").createCreditCard("2222.2222.2222.2222").setEmailFluent(
-		"2@2.com.br");
-    }
+	private String zipCode;
 
-    public static SupplierVO generateSupplier3() {
-	return new SupplierVO().setIdFluent(Integer.valueOf(3)).setNameFluent("Supplier 003").setCityFluent("Bauru")
-		.setStateFluent("SP").createCreditCard("3333.3333.3333.3333").setEmailFluent("3@3.com.br");
-    }
+	private String salary;
 
-    public SupplierVO setIdFluent(Integer id) {
-	this.id = id;
-	return this;
-    }
+	private PhoneNumberVO phone;
 
-    public SupplierVO setEmailFluent(String email) {
-	this.email = email;
-	return this;
-    }
+	private CreditCardVO cc = new CreditCardVO();
 
-    public SupplierVO setNameFluent(String name) {
-	this.name = name;
-	return this;
-    }
-
-    public SupplierVO setCityFluent(String city) {
-	this.city = city;
-	return this;
-    }
-
-    public SupplierVO setStateFluent(String state) {
-	this.state = state;
-	return this;
-    }
-
-    public SupplierVO createCreditCard(String number) {
-	if (this.cc == null) {
-	    this.cc = new CreditCardVO();
+	public static SupplierVO generateSupplier1() {
+		return new SupplierVO().setIdFluent(Integer.valueOf(1)).setNameFluent(
+				"Supplier 001").setCityFluent("Sao Paulo").setStateFluent("SP")
+				.createCreditCard("1111.1111.1111.1111").setEmailFluent(
+						"1@1.com.br");
 	}
-	this.cc.setNumber(number);
-	return this;
-    }
 
-    public void setId(Integer id) {
-	this.id = id;
-    }
+	public static SupplierVO generateSupplier2() {
+		return new SupplierVO().setIdFluent(Integer.valueOf(2)).setNameFluent(
+				"Supplier 002").setCityFluent("Rio de Janeiro").setStateFluent(
+				"RJ").createCreditCard("2222.2222.2222.2222").setEmailFluent(
+				"2@2.com.br");
+	}
 
-    public void setCity(String city) {
-	this.city = city;
-    }
+	public static SupplierVO generateSupplier3() {
+		return new SupplierVO().setIdFluent(Integer.valueOf(3)).setNameFluent(
+				"Supplier 003").setCityFluent("Bauru").setStateFluent("SP")
+				.createCreditCard("3333.3333.3333.3333").setEmailFluent(
+						"3@3.com.br");
+	}
 
-    public void setState(String state) {
-	this.state = state;
-    }
+	public SupplierVO setIdFluent(Integer id) {
+		this.id = id;
+		return this;
+	}
 
-    public Integer getId() {
-	return id;
-    }
+	public SupplierVO setEmailFluent(String email) {
+		this.email = email;
+		return this;
+	}
 
-    public void setName(String name) {
-	this.name = name;
-    }
+	public SupplierVO setNameFluent(String name) {
+		this.name = name;
+		return this;
+	}
 
-    public String getName() {
-	return name;
-    }
+	public SupplierVO setCityFluent(String city) {
+		this.city = city;
+		return this;
+	}
 
-    public String getCity() {
-	return city;
-    }
+	public SupplierVO setStateFluent(String state) {
+		this.state = state;
+		return this;
+	}
 
-    public String getState() {
-	return state;
-    }
+	public SupplierVO createCreditCard(String number) {
+		if (this.cc == null) {
+			this.cc = new CreditCardVO();
+		}
+		this.cc.setNumber(number);
+		return this;
+	}
 
-    public CreditCardVO getCc() {
-	return cc;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public void setCc(CreditCardVO cc) {
-	this.cc = cc;
-    }
+	public void setCity(String city) {
+		this.city = city;
+	}
 
-    public String getEmail() {
-	return email;
-    }
+	public void setState(String state) {
+		this.state = state;
+	}
 
-    public void setEmail(String email) {
-	this.email = email;
-    }
+	public Integer getId() {
+		return id;
+	}
 
-    public String getEmail2() {
-	return email2;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public void setEmail2(String email2) {
-	this.email2 = email2;
-    }
+	public String getName() {
+		return name;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public CreditCardVO getCc() {
+		return cc;
+	}
+
+	public void setCc(CreditCardVO cc) {
+		this.cc = cc;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getEmail2() {
+		return email2;
+	}
+
+	public void setEmail2(String email2) {
+		this.email2 = email2;
+	}
+
+	public Date getDateStart() {
+		return dateStart;
+	}
+
+	public void setDateStart(Date dateStart) {
+		this.dateStart = dateStart;
+	}
+
+	public short getAge() {
+		return age;
+	}
+
+	public void setAge(short age) {
+		this.age = age;
+	}
+
+	public String getZipCode() {
+		return zipCode;
+	}
+
+	public void setZipCode(String zipCode) {
+		this.zipCode = zipCode;
+	}
+
+	public String getSalary() {
+		return salary;
+	}
+
+	public void setSalary(String salary) {
+		this.salary = salary;
+	}
+
+	public PhoneNumberVO getPhone() {
+		return phone;
+	}
+
+	public void setPhone(PhoneNumberVO phone) {
+		this.phone = phone;
+	}
 
 }
