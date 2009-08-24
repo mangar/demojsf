@@ -47,6 +47,8 @@ public class MessageUtils {
 				.getApplication().getMessageBundle(), context.getViewRoot()
 				.getLocale(), getCurrentClassLoader(params));
 
+		System.out.println("Locale: " + context.getViewRoot().getLocale().getLanguage());
+		
 		try {
 			text = bundle.getString(key);
 		} catch (MissingResourceException e) {
@@ -58,7 +60,6 @@ public class MessageUtils {
 					.getLocale());
 			text = mf.format(params, new StringBuffer(), null).toString();
 		}
-
 		return text;
 	}
 

@@ -70,8 +70,8 @@
 
 		<!-- converter usage... -->
 		<h:outputLabel value="Age: " />
-		<h:inputText value="#{supplierHandler.supplier.age}"
-			id="_form_age" maxlength="10">
+		<h:inputText value="#{supplierHandler.supplier.age}" id="_form_age"
+			maxlength="10">
 			<f:converter converterId="javax.faces.Short" />
 		</h:inputText>
 		<h:message for="_form_age" />
@@ -94,7 +94,7 @@
 		<h:inputText value="#{supplierHandler.supplier.salary}"
 			id="_form_salary" maxlength="10">
 			<f:convertNumber maxFractionDigits="2" groupingUsed="true"
-				 currencySymbol="" maxIntegerDigits="7" type="currency"  />
+				currencySymbol="" maxIntegerDigits="7" type="currency" />
 		</h:inputText>
 		<h:message for="_form_salary" />
 		<rich:spacer height="20" />
@@ -104,7 +104,7 @@
 		<h:outputLabel value="Date Start: " />
 		<h:inputText value="#{supplierHandler.supplier.dateStart}"
 			id="_form_date_start" maxlength="10">
-			<f:converter converterId="neb.DateConverter"/>
+			<f:converter converterId="neb.DateConverter" />
 		</h:inputText>
 		<h:message for="_form_date_start" />
 		<rich:spacer height="20" />
@@ -114,7 +114,7 @@
 		<h:outputLabel value="Phone: " />
 		<h:inputText value="#{supplierHandler.supplier.phone}"
 			id="_form_phone">
-			<f:converter converterId="neb.PhoneNumberConverter"/>
+			<f:converter converterId="neb.PhoneNumberConverter" />
 		</h:inputText>
 		<h:message for="_form_phone" />
 		<rich:spacer height="20" />
@@ -127,11 +127,23 @@
 
 	<hr />
 
-	<div>
-		<h:outputLabel value="#{supplierHandler.message}" />
-	</div>
+	<div><center><h1><h:outputLabel value="#{supplierHandler.message}" /></h1></center></div>
 	<jsp:include page="list.jsp" />
 
+
+	<hr />
+
+	<a4j:form id="_form2" ajaxSubmit="true" reRender="name">
+		<h:panelGrid>
+			<h:inputText id="_form_name2" value="#{supplierHandler.supplier.name}" />
+			<h:commandButton value="Set Both Name to Mark (Ajax)" action="#{supplierHandler.doCreate}" />
+			<h:outputText id="name" value="Name:#{supplierHandler.supplier.name}" />
+		</h:panelGrid>
+	</a4j:form>
+
+
+
 </f:view>
+
 </body>
 </html>

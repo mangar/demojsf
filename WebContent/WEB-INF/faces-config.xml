@@ -77,6 +77,7 @@
 		</navigation-case>
 	</navigation-rule>
 	<application>
+		<!-- Facelets -->
 		<message-bundle>br.com.neb.resource.MessageResources_en</message-bundle>
 		<message-bundle>br.com.neb.resource.MessageResources_pt</message-bundle>
 		<locale-config>
