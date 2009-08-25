@@ -1,10 +1,18 @@
-<!DOCTYPE tiles-definitions PUBLIC
- "-//Apache Software Foundation//DTD Tiles Configuration//EN"
- "http://jakarta.apache.org/struts/dtds/tiles-config.dtd">
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration//EN" "http://jakarta.apache.org/struts/dtds/tiles-config.dtd">
+
 <tiles-definitions>
-	<definition name="layout" path="/template/template.jsp">
-		<put name="header" value="/template/header.jsp"/>
-		
-		<put name="footer" value="/template/footer.jsp"/>
+
+	<definition name="main.layout" path="/tiles/template/template.jsp">
+		<put name="header" content="/tiles/template/header.jsp" />
+		<put name="content" content="" />
+		<put name="footer" content="/tiles/template/footer.jsp" />
 	</definition>
+
+	<!--
+		<definition name="/index2" extends="main.layout"> <put name="content"
+		content="/login.jsp" /> </definition> <definition name="page.template"
+		path="/template/template.jsp" /> <definition name="page.header"
+		path="/template/header.jsp" /> <definition name="page.footer"
+		path="/template/footer.jsp" />
+	-->
 </tiles-definitions>

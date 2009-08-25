@@ -13,6 +13,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
 import br.com.neb.handler.vo.SupplierVO;
+import br.com.neb.util.handle.BaseHandler;
 
 /**
  * @author mangar
